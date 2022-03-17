@@ -46,6 +46,7 @@
     "@stdlib/fs-read-file": "^0.0.x",
     "@stdlib/math-base-special-pow": "^0.0.x",
     "@stdlib/process-cwd": "^0.0.x",
+    "@stdlib/string-format": "^0.0.x",
     "@stdlib/utils-copy": "^0.0.x",
     "@stdlib/utils-define-nonenumerable-read-only-property": "^0.0.x",
     "@stdlib/utils-keys": "^0.0.x",
