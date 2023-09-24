@@ -18,23 +18,144 @@ limitations under the License.
 
 -->
 
+
+<details>
+  <summary>
+    About stdlib...
+  </summary>
+  <p>We believe in a future in which the web is a preferred environment for numerical computation. To help realize this future, we've built stdlib. stdlib is a standard library, with an emphasis on numerical and scientific computation, written in JavaScript (and C) for execution in browsers and in Node.js.</p>
+  <p>The library is fully decomposable, being architected in such a way that you can swap out and mix and match APIs and functionality to cater to your exact preferences and use cases.</p>
+  <p>When you use stdlib, you can be absolutely certain that you are using the most thorough, rigorous, well-written, studied, documented, tested, measured, and high-quality code out there.</p>
+  <p>To join us in bringing numerical computing to the web, get started by checking us out on <a href="https://github.com/stdlib-js/stdlib">GitHub</a>, and please consider <a href="https://opencollective.com/stdlib">financially supporting stdlib</a>. We greatly appreciate your continued support!</p>
+</details>
+
 # Read File List
 
 [![NPM version][npm-image]][npm-url] [![Build Status][test-image]][test-url] [![Coverage Status][coverage-image]][coverage-url] <!-- [![dependencies][dependencies-image]][dependencies-url] -->
 
 > Read the entire contents of each file in a file list.
 
+<section class="installation">
 
+## Installation
 
+```bash
+npm install @stdlib/fs-read-file-list
+```
 
+Alternatively,
 
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm` branch][esm-url].
+-   If you are using Deno, visit the [`deno` branch][deno-url].
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd` branch][umd-url].
+-   To use as a general utility for the command line, install the corresponding [CLI package][cli-section] globally.
 
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
 
+</section>
 
+<section class="usage">
+
+## Usage
+
+```javascript
+var readFileList = require( '@stdlib/fs-read-file-list' );
+```
+
+#### readFileList( filepaths\[, options], clbk )
+
+Asynchronously reads the entire contents of each file in a file list.
+
+```javascript
+readFileList( [ __filename ], onFiles );
+
+function onFiles( error, files ) {
+    if ( error ) {
+        throw error;
+    }
+    console.dir( files );
+    // => [{...}]
+}
+```
+
+Each file is represented by an `object` with the following fields:
+
+-   **file**: file path.
+-   **data**: file contents as either a [`Buffer`][node-buffer] or `string`.
+
+The function accepts the same options as [`readFile()`][@stdlib/fs/read-file].
+
+#### readFileList.sync( filepaths\[, options] )
+
+Synchronously reads the entire contents of each file in a file list.
+
+```javascript
+var out = readFileList.sync( [ __filename ] );
+if ( out instanceof Error ) {
+    throw out;
+}
+console.dir( out );
+// => [{...}]
+```
+
+The function accepts the same options as [`readFile.sync()`][@stdlib/fs/read-file].
+
+</section>
+
+<!-- /.usage -->
+
+<section class="examples">
+
+## Examples
+
+<!-- eslint no-undef: "error" -->
+
+```javascript
+var readFileList = require( '@stdlib/fs-read-file-list' );
+
+/* Sync */
+
+var files = readFileList.sync( [ __filename ], 'utf8' );
+// returns <ObjectArray>
+
+console.log( files instanceof Error );
+// => false
+
+files = readFileList.sync( [ 'beepboop' ], {
+    'encoding': 'utf8'
+});
+// returns <Error>
+
+console.log( files instanceof Error );
+// => true
+
+/* Async */
+
+readFileList( [ __filename ], onFiles );
+readFileList( [ 'beepboop' ], onFiles );
+
+function onFiles( error, files ) {
+    if ( error ) {
+        if ( error.code === 'ENOENT' ) {
+            console.error( 'A file does not exist.' );
+        } else {
+            throw error;
+        }
+    } else {
+        console.dir( files );
+    }
+}
+```
+
+</section>
+
+<!-- /.examples -->
+
+* * *
 
 <section class="cli">
 
-
+## CLI
 
 <section class="installation">
 
@@ -52,7 +173,7 @@ npm install -g @stdlib/fs-read-file-list-cli
 
 <section class="usage">
 
-## Usage
+### Usage
 
 ```text
 Usage: read-file-list [options] <filepath1> <filepath2> ...
@@ -69,11 +190,21 @@ Options:
 
 <!-- /.usage -->
 
+<section class="notes">
 
+### Notes
+
+-   Relative file paths are resolved relative to the current working directory.
+-   Errors are written to `stderr`.
+-   File contents are written to `stdout` as newline-delimited JSON ([NDJSON][ndjson]).
+
+</section>
+
+<!-- /.notes -->
 
 <section class="examples">
 
-## Examples
+### Examples
 
 ```bash
 $ read-file-list ./README.md ./package.json
@@ -93,11 +224,6 @@ $ read-file-list ./README.md ./package.json
 
 <section class="related">
 
-## See Also
-
--   <span class="package-name">[`@stdlib/fs-read-file-list`][@stdlib/fs-read-file-list]</span><span class="delimiter">: </span><span class="description">read the entire contents of each file in a file list.</span>
-
-
 </section>
 
 <!-- /.related -->
@@ -115,7 +241,7 @@ This package is part of [stdlib][stdlib], a standard library for JavaScript and 
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
-### Community
+#### Community
 
 [![Chat][chat-image]][chat-url]
 
@@ -138,11 +264,11 @@ Copyright &copy; 2016-2023. The Stdlib [Authors][stdlib-authors].
 
 <section class="links">
 
-[npm-image]: http://img.shields.io/npm/v/@stdlib/fs-read-file-list-cli.svg
-[npm-url]: https://npmjs.org/package/@stdlib/fs-read-file-list-cli
+[npm-image]: http://img.shields.io/npm/v/@stdlib/fs-read-file-list.svg
+[npm-url]: https://npmjs.org/package/@stdlib/fs-read-file-list
 
-[test-image]: https://github.com/stdlib-js/fs-read-file-list/actions/workflows/test.yml/badge.svg?branch=main
-[test-url]: https://github.com/stdlib-js/fs-read-file-list/actions/workflows/test.yml?query=branch:main
+[test-image]: https://github.com/stdlib-js/fs-read-file-list/actions/workflows/test.yml/badge.svg?branch=v0.1.0
+[test-url]: https://github.com/stdlib-js/fs-read-file-list/actions/workflows/test.yml?query=branch:v0.1.0
 
 [coverage-image]: https://img.shields.io/codecov/c/github/stdlib-js/fs-read-file-list/main.svg
 [coverage-url]: https://codecov.io/github/stdlib-js/fs-read-file-list?branch=main
