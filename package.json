@@ -47,7 +47,7 @@
     "@stdlib/math-base-special-pow": "^0.1.0",
     "@stdlib/object-assign": "^0.1.0",
     "@stdlib/process-cwd": "^0.1.1",
-    "@stdlib/string-format": "^0.1.1",
+    "@stdlib/error-tools-fmtprodmsg": "^0.1.1",
     "@stdlib/utils-define-nonenumerable-read-only-property": "^0.1.1",
     "@stdlib/utils-keys": "^0.1.0",
     "debug": "^2.6.9"
