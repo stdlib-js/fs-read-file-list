@@ -1,5 +1,5 @@
 {
-  "name": "@stdlib/fs-read-file-list-cli",
+  "name": "@stdlib/fs-read-file-list",
   "version": "0.1.0",
   "description": "Read the entire contents of each file in a file list.",
   "license": "Apache-2.0",
@@ -16,6 +16,21 @@
   "bin": {
     "read-file-list": "./bin/cli"
   },
+  "main": "./lib",
+  "directories": {
+    "benchmark": "./benchmark",
+    "doc": "./docs",
+    "example": "./examples",
+    "lib": "./lib",
+    "test": "./test"
+  },
+  "types": "./docs/types",
+  "scripts": {
+    "test": "make test",
+    "test-cov": "make test-cov",
+    "examples": "make examples",
+    "benchmark": "make benchmark"
+  },
   "homepage": "https://stdlib.io",
   "repository": {
     "type": "git",
@@ -25,21 +40,46 @@
     "url": "https://github.com/stdlib-js/stdlib/issues"
   },
   "dependencies": {
+    "@stdlib/assert-is-function": "^0.1.1",
+    "@stdlib/assert-is-string-array": "^0.1.1",
     "@stdlib/cli-ctor": "^0.1.1",
     "@stdlib/fs-read-file": "^0.1.1",
+    "@stdlib/math-base-special-pow": "^0.1.0",
+    "@stdlib/object-assign": "^0.1.0",
     "@stdlib/process-cwd": "^0.1.1",
-    "@stdlib/fs-read-file-list": "0.1.0"
+    "@stdlib/error-tools-fmtprodmsg": "^0.1.1",
+    "@stdlib/utils-define-nonenumerable-read-only-property": "^0.1.1",
+    "@stdlib/utils-keys": "^0.1.0",
+    "debug": "^2.6.9"
   },
   "devDependencies": {
     "@stdlib/assert-is-browser": "^0.1.1",
     "@stdlib/assert-is-json": "^0.1.1",
     "@stdlib/assert-is-windows": "^0.1.1",
     "@stdlib/process-exec-path": "^0.1.1",
+    "@stdlib/utils-index-of": "^0.1.0",
+    "@stdlib/utils-noop": "^0.1.1",
     "proxyquire": "^2.0.0",
     "tape": "git+https://github.com/kgryte/tape.git#fix/globby",
     "istanbul": "^0.4.1",
-    "tap-min": "git+https://github.com/Planeshifter/tap-min.git"
+    "tap-min": "git+https://github.com/Planeshifter/tap-min.git",
+    "@stdlib/bench-harness": "^0.1.2"
   },
+  "engines": {
+    "node": ">=0.10.0",
+    "npm": ">2.7.0"
+  },
+  "os": [
+    "aix",
+    "darwin",
+    "freebsd",
+    "linux",
+    "macos",
+    "openbsd",
+    "sunos",
+    "win32",
+    "windows"
+  ],
   "keywords": [
     "stdlib",
     "stdfs",
