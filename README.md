@@ -35,31 +35,38 @@ limitations under the License.
 
 > Read the entire contents of each file in a file list.
 
-<section class="installation">
 
-## Installation
-
-```bash
-npm install @stdlib/fs-read-file-list
-```
-
-Alternatively,
-
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm` branch][esm-url].
--   If you are using Deno, visit the [`deno` branch][deno-url].
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd` branch][umd-url].
--   To use as a general utility for the command line, install the corresponding [CLI package][cli-section] globally.
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-</section>
 
 <section class="usage">
 
 ## Usage
 
+To use in Observable,
+
 ```javascript
-var readFileList = require( '@stdlib/fs-read-file-list' );
+readFileList = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/fs-read-file-list@umd/browser.js' )
+```
+
+To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
+
+```javascript
+var readFileList = require( 'path/to/vendor/umd/fs-read-file-list/index.js' )
+```
+
+To include the bundle in a webpage,
+
+```html
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/fs-read-file-list@umd/browser.js"></script>
+```
+
+If no recognized module system is present, access bundle contents via the global scope:
+
+```html
+<script type="text/javascript">
+(function () {
+    window.readFileList;
+})();
+</script>
 ```
 
 #### readFileList( filepaths\[, options], clbk )
@@ -110,8 +117,13 @@ The function accepts the same options as [`readFile.sync()`][@stdlib/fs/read-fil
 
 <!-- eslint no-undef: "error" -->
 
-```javascript
-var readFileList = require( '@stdlib/fs-read-file-list' );
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/fs-read-file-list@umd/browser.js"></script>
+<script type="text/javascript">
+(function () {
 
 /* Sync */
 
@@ -145,80 +157,18 @@ function onFiles( error, files ) {
         console.dir( files );
     }
 }
+
+})();
+</script>
+</body>
+</html>
 ```
 
 </section>
 
 <!-- /.examples -->
 
-* * *
 
-<section class="cli">
-
-## CLI
-
-<section class="installation">
-
-## Installation
-
-To use as a general utility, install the CLI package globally
-
-```bash
-npm install -g @stdlib/fs-read-file-list-cli
-```
-
-</section>
-
-<!-- CLI usage documentation. -->
-
-<section class="usage">
-
-### Usage
-
-```text
-Usage: read-file-list [options] <filepath1> <filepath2> ...
-
-Options:
-
-  -h,    --help                Print this message.
-  -V,    --version             Print the package version.
-  --enc, --encoding encoding   Encoding.
-         --flag flag           Flag. Default: 'r'.
-```
-
-</section>
-
-<!-- /.usage -->
-
-<section class="notes">
-
-### Notes
-
--   Relative file paths are resolved relative to the current working directory.
--   Errors are written to `stderr`.
--   File contents are written to `stdout` as newline-delimited JSON ([NDJSON][ndjson]).
-
-</section>
-
-<!-- /.notes -->
-
-<section class="examples">
-
-### Examples
-
-```bash
-$ read-file-list ./README.md ./package.json
-{"file":"...","data":"..."}
-{"file":"...","data":"..."}
-```
-
-</section>
-
-<!-- /.examples -->
-
-</section>
-
-<!-- /.cli -->
 
 <!-- Section for related `stdlib` packages. Do not manually edit this section, as it is automatically populated. -->
 
@@ -301,7 +251,7 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/fs-read-file-list/main/LICENSE
 
-[@stdlib/fs/read-file]: https://github.com/stdlib-js/fs-read-file
+[@stdlib/fs/read-file]: https://github.com/stdlib-js/fs-read-file/tree/umd
 
 [node-buffer]: https://nodejs.org/api/buffer.html
 
