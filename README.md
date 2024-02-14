@@ -42,13 +42,18 @@ limitations under the License.
 ## Usage
 
 ```javascript
+import readFileList from 'https://cdn.jsdelivr.net/gh/stdlib-js/fs-read-file-list@deno/mod.js';
+```
+The previous example will load the latest bundled code from the deno branch. Alternatively, you may load a specific version by loading the file from one of the [tagged bundles](https://github.com/stdlib-js/fs-read-file-list/tags). For example,
+
+```javascript
 import readFileList from 'https://cdn.jsdelivr.net/gh/stdlib-js/fs-read-file-list@v0.2.0-deno/mod.js';
 ```
 
 You can also import the following named exports from the package:
 
 ```javascript
-import { sync } from 'https://cdn.jsdelivr.net/gh/stdlib-js/fs-read-file-list@v0.2.0-deno/mod.js';
+import { sync } from 'https://cdn.jsdelivr.net/gh/stdlib-js/fs-read-file-list@deno/mod.js';
 ```
 
 #### readFileList( filepaths\[, options], clbk )
@@ -100,7 +105,7 @@ The function accepts the same options as [`readFile.sync()`][@stdlib/fs/read-fil
 <!-- eslint no-undef: "error" -->
 
 ```javascript
-import readFileList from 'https://cdn.jsdelivr.net/gh/stdlib-js/fs-read-file-list@v0.2.0-deno/mod.js';
+import readFileList from 'https://cdn.jsdelivr.net/gh/stdlib-js/fs-read-file-list@deno/mod.js';
 
 /* Sync */
 
