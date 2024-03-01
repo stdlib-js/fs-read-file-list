@@ -50,7 +50,8 @@
     "@stdlib/string-format": "^0.2.1",
     "@stdlib/utils-define-nonenumerable-read-only-property": "^0.2.1",
     "@stdlib/utils-keys": "^0.2.1",
-    "debug": "^2.6.9"
+    "debug": "^2.6.9",
+    "@stdlib/error-tools-fmtprodmsg": "^0.2.1"
   },
   "devDependencies": {
     "@stdlib/assert-is-browser": "^0.2.1",
