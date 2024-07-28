@@ -42,13 +42,13 @@ limitations under the License.
 ## Usage
 
 ```javascript
-import readFileList from 'https://cdn.jsdelivr.net/gh/stdlib-js/fs-read-file-list@esm/index.mjs';
+import readFileList from 'https://cdn.jsdelivr.net/gh/stdlib-js/fs-read-file-list@v0.2.2-esm/index.mjs';
 ```
 
 You can also import the following named exports from the package:
 
 ```javascript
-import { sync } from 'https://cdn.jsdelivr.net/gh/stdlib-js/fs-read-file-list@esm/index.mjs';
+import { sync } from 'https://cdn.jsdelivr.net/gh/stdlib-js/fs-read-file-list@v0.2.2-esm/index.mjs';
 ```
 
 #### readFileList( filepaths\[, options], clbk )
@@ -105,7 +105,7 @@ The function accepts the same options as [`readFile.sync()`][@stdlib/fs/read-fil
 <body>
 <script type="module">
 
-import readFileList from 'https://cdn.jsdelivr.net/gh/stdlib-js/fs-read-file-list@esm/index.mjs';
+import readFileList from 'https://cdn.jsdelivr.net/gh/stdlib-js/fs-read-file-list@v0.2.2-esm/index.mjs';
 
 /* Sync */
 
