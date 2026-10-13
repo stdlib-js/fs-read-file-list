@@ -1,0 +1,19 @@
+"use strict";var y=function(e,r){return function(){try{return r||e((r={exports:{}}).exports,r),r.exports}catch(a){throw r=0,a}}};var b=y(function(oe,K){K.exports={max_retries:100,max_delay:18e5}});var R=y(function(le,w){"use strict";var N=require("@stdlib/math-base-special-pow");function O(e,r){var a=N(2,e)-1;return a>r&&(a=r),a}w.exports=O});var T=y(function(ve,x){"use strict";x.exports=clearTimeout});var A=y(function(ce,S){"use strict";var W=require("@stdlib/utils-keys"),Y=T();function z(e){var r,a;for(r=W(e),a=0;a<r.length;a++)Y(e[r[a]])}S.exports=z});var P=y(function(ge,I){"use strict";var B=require("debug"),H=require("@stdlib/assert-is-string-array").primitives,J=require("@stdlib/assert-is-string").isPrimitive,Q=require("@stdlib/assert-is-function"),U=require("@stdlib/object-assign"),L=require("@stdlib/fs-read-file"),_=require("@stdlib/string-format"),k=b(),Z=R(),$=A(),s=B("read-file-list:async"),M=k.max_retries,ee=k.max_delay;function re(e,r,a){var d,t,u,i,m,n,c,o;if(!H(e))throw new TypeError(_("invalid argument. First argument must be an array of strings. Value: `%s`.",e));if(arguments.length<3?(m={},c=r):(J(r)?m=r:m=U({},r),c=a),!Q(c))throw new TypeError(_("invalid argument. Callback argument must be a function. Value: `%s`.",c));for(n=e.length,t=new Array(n),d={},i=0,s("Reading %d files...",n),o=0;o<n;o++)s("Reading file: %s (%d of %d).",e[o],o+1,n),L(e[o],m,X(o));function X(f){var q,l,g;l=e[f],g=f+1,q=0;function j(){delete d[f],s("Reading file: %s (%d of %d). Retry: %d of %d.",l,g,n,q,M),L(l,m,F)}function F(v,G){var h;if(u){s("An error has already been returned. Discarding data for file: %s (%d of %d).",l,g,n);return}if(v){if(s("Encountered an error when reading %s (%d of %d). Error: %s",l,g,n,v.message),v.code==="EMFILE"||v.code==="ENFILE"){if(q+=1,q>M)return s("Maximum number of retries exceeded. Too many open files."),v=new Error("unexpected error. Max retries exceeded. Too many open files."),E(v);h=Z(q,ee),s("Too many open files. Will retry reading file %d of %d in %s seconds.",g,n,h/1e3),d[f]=setTimeout(j,h);return}return E(v)}if(s("Successfully read file: %s (%d of %d).",l,g,n),t[f]={file:l,data:G},i+=1,s("Read %d of %d files.",i,n),i===n)return E()}return F}function E(f){if($(d),f)return u=!0,c(f);s("Successfully read all files."),c(null,t)}}I.exports=re});var C=y(function(ye,V){"use strict";var ae=require("debug"),ie=require("@stdlib/fs-read-file").sync,ne=require("@stdlib/assert-is-string-array").primitives,se=require("@stdlib/string-format"),p=ae("read-file-list:sync");function te(e,r){var a,d,t,u,i;if(!ne(e))throw new TypeError(se("invalid argument. First argument must be an array of strings. Value: `%s`.",e));for(arguments.length>1?d=r:d={},u=e.length,a=[],p("Reading %d files...",u),i=0;i<u;i++){if(p("Reading file: %s (%d of %d).",e[i],i+1,u),t=ie(e[i],d),t instanceof Error)return p("Encountered an error when reading file: %s (%d of %d). Error: %s",e[i],i,u,t.message),t;p("Successfully read file: %s (%d of %d).",e[i],i,u),a.push({file:e[i],data:t})}return p("Finished reading files."),a}V.exports=te});var ue=require("@stdlib/utils-define-nonenumerable-read-only-property"),D=P(),de=C();ue(D,"sync",de);module.exports=D;
+/**
+* @license Apache-2.0
+*
+* Copyright (c) 2018 The Stdlib Authors.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*    http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+//# sourceMappingURL=index.js.map
